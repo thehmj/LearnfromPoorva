@@ -1,5 +1,9 @@
 import EnrollClient from './server-enroll-client';
-import { getCourseByIdOrSlug } from '@/data/courses';
+import { getCourseByIdOrSlug, courses } from '@/data/courses';
+
+export function generateStaticParams() {
+  return courses.map((c) => ({ id: c.slug || c._id }));
+}
 
 export default async function CoursePage({ params }) {
   const { id } = params;
