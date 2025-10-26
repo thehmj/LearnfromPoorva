@@ -1,3 +1,9 @@
+This app uses local example data (no external API). Courses and testimonials live under `src/data`. You can register/login locally and enroll in courses; enrollments are saved in `localStorage`.
+
+Demo login (frontend only):
+- Email: `admin@admin.com`
+- Password: `admin`
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
