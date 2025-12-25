@@ -1,32 +1,65 @@
 "use client";
-import Link from 'next/link';
-import { useAuth } from '@/context/AuthContext';
+import Image from "next/image";
+import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
+import { usePathname } from "next/navigation";
+
+const NAV_ITEMS = [
+  { href: "#home", label: "Home" },
+  { href: "#courses", label: "Courses" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
+];
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const pathname = usePathname();
+
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 20 }}>
-      <div className="container" style={{ paddingTop: 14 }}>
-        <div className="glass card" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', padding: '10px 14px', borderRadius: 12, gap: 12 }}>
-          <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 900, letterSpacing: '-.02em' }}>
-            <span style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(90deg, var(--brand), var(--brand-2))' }} />
-            <span>Course Store</span>
-          </Link>
-          <nav style={{ display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'center' }}>
-            <Link className="btn" href="/">Home</Link>
-            <Link className="btn" href="/courses">Courses</Link>
-            <Link className="btn" href="/about">About Us</Link>
-            <Link className="btn" href="/blogs">Blogs</Link>
-            <Link className="btn" href="/contact">Contact Us</Link>
+    <header id="home" className="ocg-header" >
+      <div className="ocg-header-main">
+     
+        <div className="ocg-container ocg-header-main-inner">
+          <div className="ocg-logo" style={{ fontSize: 14 }}>
+            <h1>Tax Sapphire</h1>
+          </div>
+          <nav className="ocg-nav">
+            {NAV_ITEMS.map((item) => {
+              const active = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`ocg-nav-link${active ? " ocg-nav-link-active" : ""}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'flex-end' }}>
+          <div className="ocg-header-actions">
             {user ? (
               <>
-                <Link className="btn" href="/dashboard">Dashboard</Link>
-                <button onClick={logout} className="btn" style={{ cursor: 'pointer' }}>Logout</button>
+                <span style={{ fontSize: 13, marginRight: 4 }}>
+                  Hi, {user.name || "Learner"}
+                </span>
+                <button
+                  type="button"
+                  className="ocg-btn-outline"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
               </>
             ) : (
-              <Link className="btn btn-primary" href="/login">Login</Link>
+              <>
+                <Link href="/login" className="ocg-btn-outline">
+                  Login
+                </Link>
+                <Link href="/register" className="ocg-btn-primary">
+                  Register
+                </Link>
+              </>
             )}
           </div>
         </div>

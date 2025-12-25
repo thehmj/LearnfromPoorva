@@ -1,40 +1,49 @@
-"use client";
-import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-
+import Image from "next/image";
+import Link from "next/link";
+import imgLogo from "../Taxlogo.jpeg";
 export default function Hero() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   return (
-    <section className="container" style={{ position: 'relative', padding: '56px 0 28px' }}>
-      <div className="orb purple" style={{ width: 280, height: 280, top: -60, left: -60, animation: 'float 9s ease-in-out infinite' }} />
-      <div className="orb cyan" style={{ width: 300, height: 300, right: -80, top: -40, animation: 'float 11s ease-in-out infinite' }} />
-
-      <div className="grid-bg" style={{ position: 'absolute', inset: 0, maskImage: 'radial-gradient(60% 60% at 50% 40%, black, transparent 80%)' }} />
-
-      <div className="glass card" style={{ padding: 28, borderRadius: 18, position: 'relative', overflow: 'hidden' }}>
-        <div className="tilt" style={{ display: 'grid', gridTemplateColumns: '1.2fr .8fr', alignItems: 'center', gap: 16 }}>
-          <div className={`tilt-inner ${mounted ? 'fade-up' : ''}`}>
-            <div className="chip mb-2">Premium CA Courses</div>
-            <h1 style={{ fontSize: 42, lineHeight: 1.05, fontWeight: 900, letterSpacing: '-.02em', marginBottom: 10 }}>
-              Level up your CA prep with
-              <span className="gradient-text"> concept clarity</span>
-            </h1>
-            <p className="text-muted" style={{ fontSize: 16, maxWidth: 560 }}>
-              Crisp lessons, exam-focused problem sets and delightful UI. Built for Foundation, Inter and Final.
-            </p>
-            <div className="mt-4" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <Link href="#courses" className="btn btn-primary">Browse Courses</Link>
-              <Link href="/dashboard" className="btn">Go to Dashboard</Link>
-            </div>
+    <section  className="ocg-hero">
+      <div className="ocg-container ocg-hero-inner">
+        <div className="ocg-hero-content">
+          <span className="ocg-hero-eyebrow">
+            <i className="fal fa-book me-2" />
+            Personal Commerce Mentorship
+          </span>
+          <h1 className="ocg-hero-title">
+            Learn US Taxation Practically {" "}
+            {/* <span className="ocg-hero-highlight">Poorva Ma’am</span> */}
+          </h1>
+          {/* <p className="ocg-hero-text">
+            A focused, two-course program crafted and taught by a single dedicated mentor – guiding you from basics
+            to practical, job-ready skills.
+          </p> */}
+          <div className="ocg-hero-actions">
+            <Link href="/courses" className="ocg-btn-primary">
+              Explore Courses
+            </Link>
+            <Link href="/contact" className="ocg-btn-outline">
+             Login / Register
+            </Link>
           </div>
+          <ul className="ocg-hero-bullets">
+            <li>Concepts simplified with real-life examples</li>
+            <li>Practical learning with real software</li>
+            <li>Individual attention in a small batch</li>
+          </ul>
+        </div>
 
-          <div className={`tilt-inner ${mounted ? 'fade-up delay-2' : ''}`} style={{ position: 'relative' }}>
-            <div className="card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-              <Image src="/graphics/gradient-1.svg" alt="Hero" width={720} height={540} priority style={{ width: '100%', height: 'auto' }} />
-            </div>
+        <div className="ocg-hero-image-wrap">
+          <div className="ocg-hero-badge">Individual Teacher • Ahmedabad</div>
+          <div className="ocg-hero-image-card">
+            <Image
+              // src="https://www.overseascommercegurukul.com/wp-content/uploads/2023/07/cta_4_1.png"
+              src={imgLogo}
+              style={{contentFit: "cover"}}
+              alt="Students learning accounting"
+              width={640}
+              height={480}
+            />
           </div>
         </div>
       </div>

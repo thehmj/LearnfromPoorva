@@ -1,23 +1,17 @@
-import { courses } from '@/data/courses';
-import Hero from '@/components/Hero';
-import CourseCard from '@/components/CourseCard';
-import Testimonials from '@/components/Testimonials';
+import Hero from "@/components/Hero";
+import AboutUs from "@/components/AboutUs";
+import ContactUs from "@/components/ContactUs";
+import Courses from "@/components/Courses";
+import Navbar from "@/components/Navbar";
 
-export default async function Home() {
+export default function Home() {
   return (
-    <>
+    <main>
+        <Navbar />
       <Hero />
-
-      <section id="courses" className="container" style={{ marginTop: 16 }}>
-        <h2 className="section-title mb-3">Explore Courses</h2>
-        <div className="auto-grid">
-          {courses.map((c) => (
-            <CourseCard key={c._id} course={c} />
-          ))}
-        </div>
-      </section>
-
-      <Testimonials />
-    </>
+      <Courses/>
+      <AboutUs />
+      <ContactUs />
+    </main>
   );
 }

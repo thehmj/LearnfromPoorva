@@ -8,23 +8,16 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export const metadata = {
-  title: "Course Store",
-  description: "Premium CA courses with elegant UI",
+  title: "Tax Sapphire",
+  description: "Tax Sapphire - Learn US Taxation Practically",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={geistSans.variable}>
         <AuthProvider>
-          <Navbar />
           {children}
         </AuthProvider>
       </body>
